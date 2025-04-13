@@ -86,6 +86,7 @@ enum channel_status channel_destroy(channel_t* channel)
 // Additionally, selected_index is set to the index of the channel that generated the error
 enum channel_status channel_select(select_t* channel_list, size_t channel_count, size_t* selected_index)
 {
+    /* ONLY FOR BONUS */
     /* IMPLEMENT THIS */
     return SUCCESS;
 }
