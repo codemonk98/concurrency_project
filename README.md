@@ -9,6 +9,7 @@ Channels are used as a primitive to implement various other concurrent programmi
 There are multiple variations to channels, such as whether the send/receive is blocking or non-blocking. In blocking mode, receivers always block until there is data to receive, whereas in non-blocking mode, they simply return. Similarly, with senders, in blocking mode, if the queue/buffer is full, senders wait until some receiver has retrieved a value and there is available space in the queue/buffer whereas in non-blocking mode, they simply leave without sending. In this lab, you will support both blocking and non-blocking send/receive functions.
 
 The only files you will be modifying are *channel.c* and *channel.h* and optionally *linked_list.c* and *linked_list.h*. **You should NOT make any changes in any file besides these four files.** You will be implementing the following functions, which are described in channel.c and channel.h:
+
 - `channel_t* channel_create(size_t size)`
 - `enum channel_status channel_send(channel_t* channel, void* data)`
 - `enum channel_status channel_receive(channel_t* channel, void** data)`
@@ -16,6 +17,9 @@ The only files you will be modifying are *channel.c* and *channel.h* and optiona
 - `enum channel_status channel_non_blocking_receive(channel_t* channel, void** data)`
 - `enum channel_status channel_close(channel_t* channel)`
 - `enum channel_status channel_destroy(channel_t* channel)`
+
+**This function is only for Bonus points. It is NOT mandatory to implement for full marks in this project.**
+
 - `enum channel_status channel_select(select_t* channel_list, size_t channel_count, size_t* selected_index)`
 
 The enum channel_status is a named enumeration type that is defined in channel.h. Rather than using an int, which can be any number, enumerations are integers that should match one of the defined values. For example, if you want to return that the function succeeded, you would just return SUCCESS.

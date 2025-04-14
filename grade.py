@@ -83,7 +83,6 @@ add_test_cases("test_for_too_many_wakeups", iters_one, timeout_too_many_wakeups)
 
 # Score distribution
 point_breakdown_checkpoint = [
-    # Basic (100 pts)
     (1, ["make"]),
     (2, ["channel_test_initialization"]),
     (2, ["sanitize_test_initialization"]),
@@ -124,51 +123,6 @@ point_breakdown_checkpoint = [
     (2, ["channel_test_for_too_many_wakeups"]),
     (2, ["sanitize_test_for_too_many_wakeups"]),
     (2, ["valgrind_test_for_too_many_wakeups"]),
-]
-
-point_breakdown_final = [
-    # Basic (59 pts)
-    (2, ["make"]),
-    (1, ["channel_test_initialization"]),
-    (1, ["sanitize_test_initialization"]),
-    (1, ["valgrind_test_initialization"]),
-    (1, ["channel_test_free"]),
-    (1, ["sanitize_test_free"]),
-    (1, ["valgrind_test_free"]),
-    (1, ["channel_test_send_correctness"]),
-    (1, ["sanitize_test_send_correctness"]),
-    (1, ["valgrind_test_send_correctness"]),
-    (1, ["channel_test_receive_correctness"]),
-    (1, ["sanitize_test_receive_correctness"]),
-    (1, ["valgrind_test_receive_correctness"]),
-    (1, ["channel_test_non_blocking_send"]),
-    (1, ["sanitize_test_non_blocking_send"]),
-    (1, ["valgrind_test_non_blocking_send"]),
-    (1, ["channel_test_non_blocking_receive"]),
-    (1, ["sanitize_test_non_blocking_receive"]),
-    (1, ["valgrind_test_non_blocking_receive"]),
-    (2, ["channel_test_multiple_channels"]),
-    (2, ["sanitize_test_multiple_channels"]),
-    (2, ["valgrind_test_multiple_channels"]),
-    (2, ["channel_test_overall_send_receive"]),
-    (2, ["sanitize_test_overall_send_receive"]),
-    (2, ["valgrind_test_overall_send_receive"]),
-    (5, ["channel_test_stress_send_recv"]),
-    (5, ["sanitize_test_stress_send_recv"]),
-    (5, ["valgrind_test_stress_send_recv"]),
-    (1, ["channel_test_response_time"]),
-    (1, ["sanitize_test_response_time"]),
-    (1, ["valgrind_test_response_time"]),
-    (1, ["channel_test_cpu_utilization_send"]),
-    (1, ["sanitize_test_cpu_utilization_send"]),
-    (1, ["valgrind_test_cpu_utilization_send"]),
-    (1, ["channel_test_cpu_utilization_receive"]),
-    (1, ["sanitize_test_cpu_utilization_receive"]),
-    (1, ["valgrind_test_cpu_utilization_receive"]),
-    (1, ["channel_test_for_too_many_wakeups"]),
-    (1, ["sanitize_test_for_too_many_wakeups"]),
-    (1, ["valgrind_test_for_too_many_wakeups"]),
-
     # Close (30 pts)
     (5, ["channel_test_channel_close_with_send"]),
     (5, ["channel_test_channel_close_with_receive"]),
@@ -176,7 +130,9 @@ point_breakdown_final = [
     (5, ["sanitize_test_channel_close_with_receive"]),
     (5, ["valgrind_test_channel_close_with_send"]),
     (5, ["valgrind_test_channel_close_with_receive"]),
+]
 
+point_breakdown_final = [
     # Select (111 pts)
     (2, ["channel_test_select"]),
     (2, ["sanitize_test_select"]),
@@ -334,4 +290,4 @@ def grade():
 
 if __name__ == "__main__":
     score_checkpoint, total_possible_checkpoint, score_final, total_possible_final = grade()
-    print(f"Score: Final Score: {score_checkpoint} / {total_possible_checkpoint}, Bonus points (not counted for final score): {score_final-score_checkpoint} / {total_possible_final-total_possible_checkpoint}")
+    print(f"Score: Final Score: {score_checkpoint} / {total_possible_checkpoint}, Bonus points (not counted for final score): {score_final} / {total_possible_final}")
