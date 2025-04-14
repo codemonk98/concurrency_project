@@ -35,9 +35,10 @@ release: clean all
 debug: CFLAGS += -O0 # debug flags
 debug: clean $(TARGET) $(TARGET_SANITIZE)
 
+# Ensure the sanitizer objects are linked first before other libraries
 SANITIZE_OBJS = $(OBJS:%.o=%_sanitize.o)
 $(TARGET_SANITIZE): $(SANITIZE_OBJS)
-	$(CC) $(CFLAGS) -fsanitize=thread -o $@ $^ $(LDFLAGS) -static-libtsan
+	$(CC) $(CFLAGS) -fsanitize=thread -o $@ $^ -L. -Wl,-rpath=. -Llibasan.so.5 -static-libasan -lpthread -lrt
 
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
@@ -64,3 +65,4 @@ test:
 	@sed -i -e 's/\r$$//g' *.txt # dos to unix
 	@sed -i -e 's/\r/\n/g' *.txt # mac to unix
 	./grade.py
+
